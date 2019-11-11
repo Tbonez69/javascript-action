@@ -56,25 +56,23 @@ module.exports = require("os");
 const core = __webpack_require__(470);
 const wait = __webpack_require__(949);
 
-
 // most @actions toolkit packages have async methods
 async function run() {
-  try { 
+  try {
     const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
+    console.log(`Waiting ${ms} milliseconds ...`);
 
-    core.debug((new Date()).toTimeString())
+    core.debug((new Date()).toTimeString());
     wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
+    core.debug((new Date()).toTimeString());
 
     core.setOutput('time', new Date().toTimeString());
-  } 
-  catch (error) {
+  } catch (error) {
     core.setFailed(error.message);
   }
 }
 
-run()
+run();
 
 
 /***/ }),
@@ -346,15 +344,14 @@ module.exports = require("path");
 /***/ 949:
 /***/ (function(module) {
 
-let wait = function(milliseconds) {
+let wait = function (milliseconds) {
   return new Promise((resolve, reject) => {
-    if (typeof(milliseconds) !== 'number') { 
-      throw new Error('milleseconds not a number'); 
+    if (typeof milliseconds !== 'number') {
+      throw new Error('milliseconds not a number');
     }
-
     setTimeout(() => resolve("done!"), milliseconds)
   });
-}
+};
 
 module.exports = wait;
 
